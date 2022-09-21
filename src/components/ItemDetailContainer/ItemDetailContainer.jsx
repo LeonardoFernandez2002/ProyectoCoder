@@ -3,11 +3,11 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom';
 
 const films = [
-  { id:1, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje1"},
-  { id:2, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje2"},
-  { id:3, image:"https://picsum.photos/200/300", category:'films',Title:"Paisaje3"},
-  { id:4, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje4"},
-  { id:5, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje5"},
+  { id:1, price:100, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje1"},
+  { id:2, price:200, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje2"},
+  { id:3, price:300, image:"https://picsum.photos/200/300", category:'films',Title:"Paisaje3"},
+  { id:4, price:200, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje4"},
+  { id:5, price:100, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje5"},
 ];
 
 
