@@ -2,14 +2,8 @@ import React, {useState, useEffect} from 'react'
 import ItemList from '../ItemList/ItemList'
 import Title from '../title/Title'
 import { useParams } from 'react-router-dom'
+import { getFirestore, collection, getDocs, query, where} from 'firebase/firestore'
 
-const films = [
-  { id:1, price:100, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje1"},
-  { id:2, price:200, image:"https://picsum.photos/200/300", category:'films', Title:"Paisaje2"},
-  { id:3, price:300, image:"https://picsum.photos/200/300", category:'films',Title:"Paisaje3"},
-  { id:4, price:200, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje4"},
-  { id:5, price:100, image:"https://picsum.photos/200/300", category:'series',Title:"Paisaje5"},
-];
 
 
 const ItemListContainer = () => {
@@ -18,15 +12,15 @@ const ItemListContainer = () => {
   const {categoriaId} = useParams();
 
   useEffect(() => {
-    const getData = new Promise(resolve => {
-      setTimeout(() => {
-        resolve(films)
-      }, 2000);
-    });
+    const querydb = getFirestore();
+    const queryCollection = collection(querydb, 'productos')
     if(categoriaId) {
-      getData.then(res => setData(res.filter(film=> film.category === categoriaId)))
+    const queryFilter = query(queryCollection, where('category', '==', categoriaId ))
+    getDocs(queryFilter)
+      .then(res=> setData(res.docs.map(product => ({ id: product.id, ...product.data() }))))
     } else {
-      getData.then(res => setData(res))
+      getDocs(queryCollection)
+      .then(res=> setData(res.docs.map(product => ({ id: product.id, ...product.data() }))))
     }
 
 
