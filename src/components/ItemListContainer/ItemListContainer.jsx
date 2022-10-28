@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import styles from './ItemListContainer.module.css'
 import ItemList from '../ItemList/ItemList'
 import Title from '../title/Title'
 import { useParams } from 'react-router-dom'
@@ -30,8 +31,10 @@ const ItemListContainer = () => {
 
   return (
     <>
-        <Title greeting='Pablo'/>
-        <ItemList data={data}/>
+        <div className={styles.itemlist}>
+          <Title greeting=''/>
+          <ItemList data={data}/>
+       </div>
     </>
   )
 }
